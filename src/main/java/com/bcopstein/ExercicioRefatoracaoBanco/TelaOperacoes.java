@@ -52,13 +52,11 @@ public class TelaOperacoes {
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
         
-        String categoria = "Categoria: "+conta.getStrStatus();
+        String categoria = "Categoria: "+conta.getStrStatus(); 
         String limRetDiaria = "Limite retirada diaria: "+conta.getLimRetiradaDiaria();
         
         Label cat = new Label(categoria);
         grid.add(cat, 0, 1);
-        
-
         
         Label lim = new Label(limRetDiaria);
         grid.add(lim, 0, 2);
@@ -102,13 +100,15 @@ public class TelaOperacoes {
         Button btnEstatistica = new Button("Estatistica");
         
         HBox hbBtn = new HBox(20);
-        
         hbBtn.setAlignment(Pos.TOP_CENTER);
         hbBtn.getChildren().add(btnCredito);
         hbBtn.getChildren().add(btnDebito);
-        hbBtn.getChildren().add(btnVoltar);
         hbBtn.getChildren().add(btnEstatistica);
         grid.add(hbBtn, 1, 2);
+        
+        HBox hbBtn2 = new HBox (20);
+        hbBtn2.getChildren().add(btnVoltar);
+        grid.add(hbBtn2, 2, 5);
         
         btnEstatistica.setOnAction(e->{
         	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes, conta);
