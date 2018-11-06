@@ -65,6 +65,7 @@ public class TelaOperacoes {
         
         Label tit = new Label("Ultimos movimentos");
         grid.add(tit,0,3);
+        
 
         // Seleciona apenas o extrato da conta atual
         operacoesConta = 
@@ -98,12 +99,22 @@ public class TelaOperacoes {
         Button btnCredito = new Button("Credito");
         Button btnDebito = new Button("Debito");
         Button btnVoltar = new Button("Voltar");
+        Button btnEstatistica = new Button("Estatistica");
+        
         HBox hbBtn = new HBox(20);
+        
         hbBtn.setAlignment(Pos.TOP_CENTER);
         hbBtn.getChildren().add(btnCredito);
         hbBtn.getChildren().add(btnDebito);
         hbBtn.getChildren().add(btnVoltar);
+        hbBtn.getChildren().add(btnEstatistica);
         grid.add(hbBtn, 1, 2);
+        
+        btnEstatistica.setOnAction(e->{
+        	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes, conta);
+        	Scene cena = telaEstatistica.getTelaEstatistica();
+        	mainStage.setScene(cena);
+        });
         
         btnCredito.setOnAction(e->{
         	try {
