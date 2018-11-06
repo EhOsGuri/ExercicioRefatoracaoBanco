@@ -118,7 +118,7 @@ public class TelaOperacoes {
                     
         	  Operacao op = new Operacao(
         			  date.get(GregorianCalendar.DAY_OF_MONTH),
-        			  date.get(((int)date.get(GregorianCalendar.MONTH))+1),
+        			  ((int)date.get(GregorianCalendar.MONTH))+1,
         			  date.get(GregorianCalendar.YEAR),
         			  date.get(GregorianCalendar.HOUR),
         			  date.get(GregorianCalendar.MINUTE),
@@ -151,7 +151,7 @@ public class TelaOperacoes {
         	  GregorianCalendar date = new GregorianCalendar();
         	  Operacao op = new Operacao(
         			  date.get(GregorianCalendar.DAY_OF_MONTH),
-        			  date.get(((int) date.get(GregorianCalendar.MONTH))+1),
+        			  ((int)date.get(GregorianCalendar.MONTH))+1,
         			  date.get(GregorianCalendar.YEAR),
         			  date.get(GregorianCalendar.HOUR),
         			  date.get(GregorianCalendar.MINUTE),
