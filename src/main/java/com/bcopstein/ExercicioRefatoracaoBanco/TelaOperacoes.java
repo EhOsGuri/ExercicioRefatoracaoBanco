@@ -112,8 +112,6 @@ public class TelaOperacoes {
         	  conta.deposito(valor);
         	  GregorianCalendar date = new GregorianCalendar();
                     
-                  int m = ((int) date.get(GregorianCalendar.MONTH))+1;
-                    
         	  Operacao op = new Operacao(
         			  date.get(GregorianCalendar.DAY_OF_MONTH),
         			  ((int)date.get(GregorianCalendar.MONTH))+1,
