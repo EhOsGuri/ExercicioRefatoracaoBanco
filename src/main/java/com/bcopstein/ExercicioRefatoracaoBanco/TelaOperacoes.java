@@ -57,7 +57,9 @@ public class TelaOperacoes {
         
         Label cat = new Label(categoria);
         grid.add(cat, 0, 1);
+        
 
+        
         Label lim = new Label(limRetDiaria);
         grid.add(lim, 0, 2);
         
@@ -127,6 +129,7 @@ public class TelaOperacoes {
         			  0);
               operacoes.add(op);        	  
         	  tfSaldo.setText(""+conta.getSaldo());
+                  cat.setText("Categoria: "+conta.getStrStatus());
         	  operacoesConta.add(op);
         	}catch(NumberFormatException ex) {
 				Alert alert = new Alert(AlertType.WARNING);
@@ -160,6 +163,8 @@ public class TelaOperacoes {
         	  // Esta adicionando em duas listas (resolver na camada de negocio)
               operacoes.add(op);        	  
         	  tfSaldo.setText(""+conta.getSaldo());
+                    cat.setText("Categoria: "+conta.getStrStatus());
+ 
         	  operacoesConta.add(op);
           	  tfSaldo.setText(""+conta.getSaldo());
           	}catch(NumberFormatException ex) {
