@@ -59,14 +59,22 @@ private Stage mainStage;
         String qtdCreditos = "Qtd de créditos do mês: ";		//qtd de epositos
         String totalDebitos = "Total de débitos do mês: R$"; 	//total de R$ retirado
         String qtdDebitos = "Qtd de débitos do mês: ";			//qtd de retiradas
+        //-------Entrada
         
-        Label labelMes = new Label(mes);
-        grid.add(labelMes, 0, 1);
-        grid.add(this.campoMes, 1, 1);
-           
-        Label labelAno = new Label(ano); 
-        grid.add(labelAno, 2, 1);
-        grid.add(this.campoAno, 3, 1);
+        Label labelMes = new Label(mes);       
+        Label labelAno = new Label(ano);
+        
+        HBox hbBtn3 = new HBox(20);
+        hbBtn3.getChildren().add(labelMes);
+        hbBtn3.getChildren().add(this.campoMes);
+        hbBtn3.getChildren().add(labelAno);
+        hbBtn3.getChildren().add(this.campoAno);
+        
+        Button btnOk = new Button("Ok");
+        hbBtn3.getChildren().add(btnOk);
+        
+        grid.add(hbBtn3, 0, 1);
+        //------
         
         Label saldoM = new Label(saldoMedio);
         grid.add(new Label(saldoMedio), 0, 3);
@@ -88,11 +96,6 @@ private Stage mainStage;
         HBox hbBtn = new HBox(20);
         hbBtn.getChildren().add(btnVoltar);
         grid.add(hbBtn, 10, 10);
-        
-        Button btnOk = new Button("Ok");
-        HBox hbBtn2 = new HBox(10);
-        hbBtn2.getChildren().add(btnOk);
-        grid.add(hbBtn2, 4, 1);
         
         btnVoltar.setOnAction(e->{
         	mainStage.setScene(cenaOperacoes);
