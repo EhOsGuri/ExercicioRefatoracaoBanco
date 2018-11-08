@@ -110,7 +110,7 @@ public class TelaOperacoes {
         grid.add(hbBtn2, 2, 5);
         
         btnEstatistica.setOnAction(e->{
-        	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes, conta);
+        	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes, conta, operacoes);
         	Scene cena = telaEstatistica.getTelaEstatistica();
         	mainStage.setScene(cena);
         });

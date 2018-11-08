@@ -7,6 +7,7 @@ package com.bcopstein.ExercicioRefatoracaoBanco;
 import javafx.scene.control.TextField;
 
 import java.awt.TextArea;
+import java.util.List;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,13 +27,15 @@ private Stage mainStage;
     private Scene cenaEstatistica;
     private Scene cenaOperacoes;
     private Conta conta; 
+    private List<Operacao> operacoes;
     private TextField campoMes;
     private TextField campoAno;
 
-    public TelaEstatistica(Stage mainStage, Scene cenaoperacoes,Conta c) {
+    public TelaEstatistica(Stage mainStage, Scene cenaoperacoes, Conta c, List<Operacao> operacoes) {
 	this.mainStage = mainStage;
 	this.cenaOperacoes=cenaoperacoes;
 	this.conta=c;
+        this.operacoes = operacoes;
 	this.campoMes = new TextField();
 	this.campoAno = new TextField();
     }
@@ -95,7 +98,35 @@ private Stage mainStage;
         Button btnVoltar = new Button("Voltar");
         HBox hbBtn = new HBox(20);
         hbBtn.getChildren().add(btnVoltar);
-        grid.add(hbBtn, 10, 10);
+        grid.add(hbBtn, 1, 10);
+        
+        btnOk.setOnAction(e->{
+            double saldo;
+            double valorMes=0;
+            int qntMes=0;
+            double valorDebMes=0;
+            int qntDebMes=0;
+            for(Operacao o: operacoes){
+                if(o.getNumeroConta() == conta.getNumero()){
+                    if(Integer.toString(o.getMes()).equals(campoMes.getText()) && Integer.toString(o.getAno()).equals(campoAno.getText())){
+                        if(o.getTipoOperacao() == 0){
+                            valorMes+=o.getValorOperacao();
+                            qntMes++;
+                        }else{
+                            valorDebMes+=o.getValorOperacao();
+                            qntDebMes++;
+                        }
+                        
+                        
+                    }
+                }
+            }
+                tCreditos.setText("Total de créditos do mês: R$ "+valorMes);	//total de R$  depositado
+                qCreditos.setText("Qtd de créditos do mês: "+qntMes);		//qtd de epositos
+                tDebitos.setText("Total de débitos do mês: R$ "+valorDebMes); 	//total de R$ retirado
+                qDebitos.setText("Qtd de débitos do mês: "+qntDebMes);			//qtd de retiradas
+            
+        });
         
         btnVoltar.setOnAction(e->{
         	mainStage.setScene(cenaOperacoes);
