@@ -57,7 +57,7 @@ private Stage mainStage;
         
         String mes = "MÊS: ";
         String ano = "ANO: ";
-        String saldoMedio = "Saldo médio do mês: ";
+        String saldoMedio = "Saldo médio do mês: R$ ";
         String totalCreditos = "Total de créditos do mês: R$";	//total de R$  depositado
         String qtdCreditos = "Qtd de créditos do mês: ";		//qtd de epositos
         String totalDebitos = "Total de débitos do mês: R$"; 	//total de R$ retirado
@@ -80,7 +80,7 @@ private Stage mainStage;
         //------
         
         Label saldoM = new Label(saldoMedio);
-        grid.add(new Label(saldoMedio), 0, 3);
+        grid.add(saldoM, 0, 3);
         
         Label tCreditos = new Label(totalCreditos);
         grid.add(tCreditos, 0, 4);
@@ -101,7 +101,8 @@ private Stage mainStage;
         grid.add(hbBtn, 1, 10);
         
         btnOk.setOnAction(e->{
-            double saldo;
+            double saldo=0;
+            boolean b = true;
             double valorMes=0;
             int qntMes=0;
             double valorDebMes=0;
@@ -109,6 +110,7 @@ private Stage mainStage;
             for(Operacao o: operacoes){
                 if(o.getNumeroConta() == conta.getNumero()){
                     if(Integer.toString(o.getMes()).equals(campoMes.getText()) && Integer.toString(o.getAno()).equals(campoAno.getText())){
+                        b = false;
                         if(o.getTipoOperacao() == 0){
                             valorMes+=o.getValorOperacao();
                             qntMes++;
@@ -119,8 +121,21 @@ private Stage mainStage;
                         
                         
                     }
+                    
+                    if(b){
+                        if(o.getTipoOperacao() == 0){
+                            saldo+= o.getValorOperacao();
+                        }else{
+                            saldo-= o.getValorOperacao();
+                    }
                 }
+                }
+                
+                
             }
+            saldo = (saldo + valorMes - valorDebMes)/(qntMes + qntDebMes);
+                
+                saldoM.setText("Saldo médio do mês: R$ "+saldo);
                 tCreditos.setText("Total de créditos do mês: R$ "+valorMes);	//total de R$  depositado
                 qCreditos.setText("Qtd de créditos do mês: "+qntMes);		//qtd de epositos
                 tDebitos.setText("Total de débitos do mês: R$ "+valorDebMes); 	//total de R$ retirado
