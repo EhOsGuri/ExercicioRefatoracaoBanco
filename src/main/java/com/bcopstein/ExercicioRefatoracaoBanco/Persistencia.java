@@ -14,10 +14,25 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Persistencia {
-    private final String NomeBDContas = "BDContasBNG.txt";
-    private final String NomeBDOperacoes = "BDOperBNG.txt";
+ 
+    private static Persistencia uniqueInstance;
+    private final String NomeBDContas;
+    private final String NomeBDOperacoes;
     
-    public Map<Integer,Conta> loadContas(){
+ 
+    private Persistencia() {
+    	NomeBDContas = "BDContasBNG.txt";
+        NomeBDOperacoes = "BDOperBNG.txt";
+    }
+ 
+    public static Persistencia getInstance() {
+        if (uniqueInstance == null)
+            uniqueInstance = new Persistencia();
+ 
+        return uniqueInstance;
+    }
+    
+     public Map<Integer,Conta> loadContas(){
     	Map<Integer,Conta> contas = new HashMap<>();
     	
         String currDir = Paths.get("").toAbsolutePath().toString();
@@ -119,5 +134,5 @@ public class Persistencia {
             return null;
         } 
         return operacoes;    	
-    }
+    }    
 }
