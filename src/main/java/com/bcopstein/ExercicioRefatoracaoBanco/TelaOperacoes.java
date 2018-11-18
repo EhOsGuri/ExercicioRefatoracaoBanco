@@ -26,9 +26,7 @@ public class TelaOperacoes {
 	private Scene cenaOperacoes;
 	private List<Operacao> operacoes;
 	private ObservableList<Operacao> operacoesConta;
-
 	private Conta conta; 
-
 	private TextField tfValorOperacao;
 	private TextField tfSaldo;
 

@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.bcopstein.ExercicioRefatoracaoBanco;
 
-import java.util.HashMap;
+package com.bcopstein.ExercicioRefatoracaoBanco;
 import java.util.Map;
 
-/**
- *
- * @author 17111238
- */
 public class Contas {
 
     private static Contas uniqueInstance;
@@ -34,8 +24,5 @@ public class Contas {
     
     public Map<Integer,Conta> getContas() {
         return contas;
-    }
-    
-  
-    
+    }  
 }

@@ -25,7 +25,6 @@ public class TelaEntrada {
 	private Scene cenaEntrada; 
 	private Map<Integer, Conta> contas; 
 	private List<Operacao> operacoes; 
-
 	private TextField tfContaCorrente;
 
 	public TelaEntrada(Stage anStage, Map<Integer, Conta> lstContas, List<Operacao> operacoes) {
@@ -33,7 +32,7 @@ public class TelaEntrada {
 		contas = lstContas;
 		this.operacoes = operacoes;
 	}
-
+	
 	public Scene getTelaEntrada() {
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.CENTER);

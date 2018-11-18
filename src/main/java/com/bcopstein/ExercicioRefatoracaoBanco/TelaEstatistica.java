@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bcopstein.ExercicioRefatoracaoBanco;
 import javafx.scene.control.TextField;
-
 import java.awt.TextArea;
 import java.util.List;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,8 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class TelaEstatistica {
-private Stage mainStage; 
-	
+	private Stage mainStage; 	
     private Scene cenaEstatistica;
     private Scene cenaOperacoes;
     private Conta conta; 
@@ -62,6 +54,7 @@ private Stage mainStage;
         String qtdCreditos = "Qtd de créditos do mês: ";		//qtd de epositos
         String totalDebitos = "Total de débitos do mês: R$"; 	//total de R$ retirado
         String qtdDebitos = "Qtd de débitos do mês: ";			//qtd de retiradas
+
         //-------Entrada
         
         Label labelMes = new Label(mes);       
@@ -77,6 +70,7 @@ private Stage mainStage;
         hbBtn3.getChildren().add(btnOk);
         
         grid.add(hbBtn3, 0, 1);
+       
         //------
         
         Label saldoM = new Label(saldoMedio);
@@ -95,6 +89,7 @@ private Stage mainStage;
         grid.add(qDebitos, 0, 7);
         
         //Botoes -----------------------------------------------
+        
         Button btnVoltar = new Button("Voltar");
         HBox hbBtn = new HBox(20);
         hbBtn.getChildren().add(btnVoltar);
@@ -117,29 +112,23 @@ private Stage mainStage;
                         }else{
                             valorDebMes+=o.getValorOperacao();
                             qntDebMes++;
-                        }
-                        
-                        
+                        }                
                     }
-                    
                     if(b){
                         if(o.getTipoOperacao() == 0){
                             saldo+= o.getValorOperacao();
                         }else{
                             saldo-= o.getValorOperacao();
+                        }
                     }
                 }
-                }
-                
-                
             }
             saldo = (saldo + valorMes - valorDebMes)/(qntMes + qntDebMes);
-                
-                saldoM.setText("Saldo médio do mês: R$ "+saldo);
-                tCreditos.setText("Total de créditos do mês: R$ "+valorMes);	//total de R$  depositado
-                qCreditos.setText("Qtd de créditos do mês: "+qntMes);		//qtd de epositos
-                tDebitos.setText("Total de débitos do mês: R$ "+valorDebMes); 	//total de R$ retirado
-                qDebitos.setText("Qtd de débitos do mês: "+qntDebMes);			//qtd de retiradas
+            saldoM.setText("Saldo médio do mês: R$ "+saldo);
+            tCreditos.setText("Total de créditos do mês: R$ "+valorMes);	//total de R$  depositado
+            qCreditos.setText("Qtd de créditos do mês: "+qntMes);		//qtd de epositos
+            tDebitos.setText("Total de débitos do mês: R$ "+valorDebMes); 	//total de R$ retirado
+            qDebitos.setText("Qtd de débitos do mês: "+qntDebMes);			//qtd de retiradas
             
         });
         
@@ -150,5 +139,4 @@ private Stage mainStage;
         cenaEstatistica = new Scene(grid);
         return cenaEstatistica;
     }
-
 }

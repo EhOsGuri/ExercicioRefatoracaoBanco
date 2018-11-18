@@ -19,23 +19,21 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 
-
 public class App extends Application {
 	private Persistencia persistencia;
 	private Map<Integer,Conta> contas;
 	private List<Operacao> operacoes;
-	
 	private TelaEntrada telaEntrada;
 	
     @Override
     public void start(Stage primaryStage) {
-    	persistencia = Persistencia.getInstance();
-        contas = persistencia.loadContas();    	
-    	operacoes = persistencia.loadOperacoes();
+    	this.persistencia = Persistencia.getInstance();
+    	this.contas = persistencia.loadContas();    	
+    	this.operacoes = persistencia.loadOperacoes();
     	
     	primaryStage.setTitle("$$ Banco NOSSA GRANA $$");
 
-    	telaEntrada = new TelaEntrada(primaryStage, contas, operacoes); // << Substituir por singleton
+    	telaEntrada = new TelaEntrada(primaryStage,contas,operacoes);//Substituir por singleton
 
         primaryStage.setScene(telaEntrada.getTelaEntrada());
         primaryStage.show();
