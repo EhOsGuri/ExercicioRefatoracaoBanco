@@ -30,11 +30,11 @@ public class TelaOperacoes {
 	private TextField tfValorOperacao;
 	private TextField tfSaldo;
 
-	public TelaOperacoes(Stage mainStage, Scene telaEntrada, Conta conta, List<Operacao> operacoes) { // Tirar esse parâmetro																					// conta
+	public TelaOperacoes(Stage mainStage, Scene telaEntrada, Conta conta) { 
 		this.mainStage = mainStage;
 		this.cenaEntrada = telaEntrada;
 		this.conta = conta;
-		this.operacoes = operacoes;
+		this.operacoes = Operacoes.getInstance().getOperacoes();
 	}
 
 	public Scene getTelaOperacoes() {
@@ -50,7 +50,7 @@ public class TelaOperacoes {
         grid.add(scenetitle, 0, 0, 2, 1);
         
         String categoria = "Categoria: "+conta.getStrStatus(); 
-        String limRetDiaria = "Limite retirada diaria: "+conta.getLimRetiradaDiaria();
+        String limRetDiaria = "Limite retirada diaria: "+conta.getLimRetiradaDiaria(); //usar validacoesLimites.java
         
         Label cat = new Label(categoria);
         grid.add(cat, 0, 1);
@@ -63,13 +63,7 @@ public class TelaOperacoes {
         
 
         // Seleciona apenas o extrato da conta atual
-        operacoesConta = 
-        		FXCollections.observableArrayList(
-        				operacoes
-        				.stream()
-        				.filter(op -> op.getNumeroConta() == this.conta.getNumero())
-        				.collect(Collectors.toList())
-        				);
+        operacoesConta = LogicaOperacoes.getInstance().extrato(this.conta.getNumero());
         
         ListView<Operacao> extrato = new ListView<>(operacoesConta);
         extrato.setPrefHeight(140);
@@ -108,7 +102,7 @@ public class TelaOperacoes {
         grid.add(hbBtn2, 2, 5);
         
         btnEstatistica.setOnAction(e->{
-        	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes, conta, operacoes);
+        	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes, conta);
         	Scene cena = telaEstatistica.getTelaEstatistica();
         	mainStage.setScene(cena);
         });

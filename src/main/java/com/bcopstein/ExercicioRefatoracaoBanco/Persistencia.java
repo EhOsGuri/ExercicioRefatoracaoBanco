@@ -26,9 +26,10 @@ public class Persistencia {
     }
  
     public static Persistencia getInstance() {
-        if (uniqueInstance == null)
+        if (uniqueInstance == null) {
+        	System.out.println("Instancia de Persistencia criada...");
             uniqueInstance = new Persistencia();
- 
+        }
         return uniqueInstance;
     }
     

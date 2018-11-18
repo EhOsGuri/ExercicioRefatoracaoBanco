@@ -27,10 +27,10 @@ public class TelaEntrada {
 	private List<Operacao> operacoes; 
 	private TextField tfContaCorrente;
 
-	public TelaEntrada(Stage anStage, Map<Integer, Conta> lstContas, List<Operacao> operacoes) {
-		mainStage = anStage;
-		contas = lstContas;
-		this.operacoes = operacoes;
+	public TelaEntrada(Stage anStage) {
+		this.mainStage = anStage;
+		this.contas = Contas.getInstance().getContas();
+		this.operacoes = Operacoes.getInstance().getOperacoes();
 	}
 	
 	public Scene getTelaEntrada() {
@@ -39,7 +39,6 @@ public class TelaEntrada {
 		grid.setHgap(10);
 		grid.setVgap(10);
 		grid.setPadding(new Insets(25, 25, 25, 25));
-		// grid.setGridLinesVisible(true);
 
 		Text scenetitle = new Text("Bem vindo ao Banco Nossa Grana");
 		scenetitle.setId("welcome-text");
@@ -72,21 +71,18 @@ public class TelaEntrada {
 		btnIn.setOnAction(e -> {
 			try {
 				Integer nroConta = Integer.parseInt(tfContaCorrente.getText());
-				// Codigo da camada de negócio
-				Conta conta = contas.get(nroConta);
-				if (conta == null) {
-					throw new NumberFormatException("Conta invalida");
-				}
-				// Transformar o parâmetro "conta" na conta atual na camada de negócio
-				TelaOperacoes toper = new TelaOperacoes(mainStage, cenaEntrada,conta,operacoes);
+				
+				Conta conta = LogicaOperacoes.getInstance().contaAtual(nroConta);
+				
+				TelaOperacoes toper = new TelaOperacoes(mainStage, cenaEntrada,conta);
 				Scene scene = toper.getTelaOperacoes();
 				mainStage.setScene(scene);
+				
 			} catch (NumberFormatException ex) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Conta inválida !!");
 				alert.setHeaderText(null);
 				alert.setContentText("Número de conta inválido!!");
-
 				alert.showAndWait();
 			}
 		});

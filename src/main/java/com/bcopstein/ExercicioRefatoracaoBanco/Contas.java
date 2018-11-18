@@ -12,9 +12,10 @@ public class Contas {
     }
     
     public static Contas getInstance() {
-        if (uniqueInstance == null)
+        if (uniqueInstance == null) {
+        	System.out.println("Instancia de Contas criada...");
             uniqueInstance = new Contas();
- 
+        } 
         return uniqueInstance;
     }
     

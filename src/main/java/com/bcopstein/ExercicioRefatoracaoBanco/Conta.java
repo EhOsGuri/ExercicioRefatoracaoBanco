@@ -13,7 +13,7 @@ public class Conta {
 	private double saldo;
 	private int status;
 
-	public Conta(int umNumero, String umNome) {
+	public Conta(int umNumero, String umNome) { //usar padrao statePattern
 		numero = umNumero;
 		correntista = umNome;
 		saldo = 0.0;
@@ -53,7 +53,7 @@ public class Conta {
 		}
 	}
 	
-	public double getLimRetiradaDiaria() {
+	public double getLimRetiradaDiaria() { //ValidacoesLimites.java
 		switch(status) {
 		case 0:  return 10000.0;
 		case 1:  return 100000.0;
@@ -62,7 +62,7 @@ public class Conta {
 		}
 	}
 	
-	public void deposito(double valor) {
+	public void deposito(double valor) { // passar para LogicaOperacoes.java
 		if (status == SILVER) {
 			saldo += valor;
 			if (saldo >= LIM_SILVER_GOLD) {
@@ -78,7 +78,7 @@ public class Conta {
 		}
 	}
 
-	public void retirada(double valor) {
+	public void retirada(double valor) { // passar para LogicaOperacoes.java
 		if (saldo - valor < 0.0) {
 			return;
 		} else {
@@ -94,10 +94,11 @@ public class Conta {
 			}
 		}
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Conta [numero=" + numero + ", correntista=" + correntista + ", saldo=" + saldo + ", status=" + status
 				+ "]";
 	}
+	
 }

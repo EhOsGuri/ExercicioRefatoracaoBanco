@@ -23,11 +23,11 @@ public class TelaEstatistica {
     private TextField campoMes;
     private TextField campoAno;
 
-    public TelaEstatistica(Stage mainStage, Scene cenaoperacoes, Conta c, List<Operacao> operacoes) {
+    public TelaEstatistica(Stage mainStage, Scene cenaoperacoes, Conta c) {
 	this.mainStage = mainStage;
 	this.cenaOperacoes=cenaoperacoes;
 	this.conta=c;
-        this.operacoes = operacoes;
+    this.operacoes = Operacoes.getInstance().getOperacoes();
 	this.campoMes = new TextField();
 	this.campoAno = new TextField();
     }
@@ -95,7 +95,7 @@ public class TelaEstatistica {
         hbBtn.getChildren().add(btnVoltar);
         grid.add(hbBtn, 1, 10);
         
-        btnOk.setOnAction(e->{
+        btnOk.setOnAction(e->{ //passar para LogicaOperacoes
             double saldo=0;
             boolean b = true;
             double valorMes=0;
