@@ -71,7 +71,7 @@ public class TelaOperacoes {
 
         tfSaldo = new TextField();
         tfSaldo.setDisable(true);
-        tfSaldo.setText(""+conta.getSaldo());
+        tfSaldo.setText(""+conta.getSaldo()); // mudar
         HBox valSaldo = new HBox(20);        
         valSaldo.setAlignment(Pos.BOTTOM_LEFT);
         valSaldo.getChildren().add(new Label("Saldo"));
