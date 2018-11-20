@@ -1,19 +1,22 @@
 package com.bcopstein.ExercicioRefatoracaoBanco;
 public class Conta {
-	public final int SILVER = 0;
+	public final int SILVER = 0; //passar para IStateConta
 	public final int GOLD = 1;
 	public final int PLATINUM = 2;
-	public final int LIM_SILVER_GOLD = 50000;
+	
+	public final int LIM_SILVER_GOLD = 50000; // passar para ValidacoesLimites
 	public final int LIM_GOLD_PLATINUM = 200000;
 	public final int LIM_PLATINUM_GOLD = 100000;
 	public final int LIM_GOLD_SILVER = 25000;
+	
+	public IStateConta Categoria;
 
 	private int numero;
 	private String correntista;
 	private double saldo;
 	private int status;
 
-	public Conta(int umNumero, String umNome) { //usar padrao statePattern
+	public Conta(int umNumero, String umNome) { 
 		numero = umNumero;
 		correntista = umNome;
 		saldo = 0.0;
@@ -53,7 +56,7 @@ public class Conta {
 		}
 	}
 	
-	public double getLimRetiradaDiaria() { //ValidacoesLimites.java
+	public double getLimRetiradaDiaria() { //Passar para ValidacoesLimites.java
 		switch(status) {
 		case 0:  return 10000.0;
 		case 1:  return 100000.0;
