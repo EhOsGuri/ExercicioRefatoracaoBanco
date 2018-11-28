@@ -11,14 +11,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Observable;
 import java.util.Scanner;
 
-public class Persistencia {
+public class Persistencia extends Observable{
  
     private static Persistencia uniqueInstance;
     private final String NomeBDContas;
     private final String NomeBDOperacoes;
-    
+    private Conta contaMaiorSaldoMedio;    
  
     private Persistencia() {
     	NomeBDContas = "BDContasBNG.txt";
@@ -134,6 +135,18 @@ public class Persistencia {
             System.err.format("Erro de E/S: %s%n", x);
             return null;
         } 
-        return operacoes;    	
-    }    
+        return operacoes; 
+    }
+        
+    public void calcularMaiorSaldoMedio() {
+    	//...
+    }
+    public Conta getContaMaiorSaldoMedio() { 
+    	return this.contaMaiorSaldoMedio;
+    }
+    public void setContaMaiorSaldoMedio(Conta c) {
+    	this.contaMaiorSaldoMedio=c;
+    	setChanged();
+    	notifyObservers();
+    }
 }

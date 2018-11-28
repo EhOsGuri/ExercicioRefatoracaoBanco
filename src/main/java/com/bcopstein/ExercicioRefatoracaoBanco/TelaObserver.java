@@ -18,13 +18,17 @@ import javafx.scene.control.TextField;
 public class TelaObserver implements Observer {
 	private Stage mainStage;
     private Scene cenaObserver;
-    private TextField nomeCorrentista;
-    private TextField maiorSaldoMedio;//saldo médio com o maior saldo médio da agência
+    private TextField nomeCorrentistaTextField;
+    private TextField maiorSaldoMedioTextField;//saldo médio com o maior saldo médio da agência   
+    private Observable observados;
+    private Conta contaMaiorSaldoMedio;
     
-    public TelaObserver(Stage tela) {
+    public TelaObserver(Stage mainStage) {
+    	this.mainStage=mainStage;
+    	this.observados=Persistencia.getInstance();
+    	observados.addObserver(this);
     	
     }
-    
     public Scene getTelaObserver() {
     	GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -46,14 +50,21 @@ public class TelaObserver implements Observer {
         Label labelSaldo = new Label(saldoMedio);
         grid.add(labelSaldo, 0, 4);
         
+        Conta c = LogicaOperacoes.getInstance().maiorSaldoMedio();
+        this.nomeCorrentistaTextField.setText(c.getCorrentista());
+       // this.maiorSaldoMedioTextField.setText(c.);
         
     	cenaObserver = new Scene(grid);
         return cenaObserver;
     }
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void update(Observable p, Object arg1) {
 		// TODO Auto-generated method stub
-		
+		if(p instanceof Persistencia) {
+			Persistencia pers = (Persistencia) p;
+			contaMaiorSaldoMedio=pers.getContaMaiorSaldoMedio();
+			System.out.println("Atualização de saldo médio.");
+		}
 	}
 }

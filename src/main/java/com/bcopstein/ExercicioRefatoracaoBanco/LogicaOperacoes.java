@@ -56,4 +56,7 @@ public class LogicaOperacoes {
     public double ttCreditos(Conta conta, String mes, String ano) {
         return Operacoes.getInstance().ttCreditos(conta, mes, ano);
     }
+    public Conta maiorSaldoMedio() {
+    	return Persistencia.getInstance().getContaMaiorSaldoMedio();
+    }
 }
