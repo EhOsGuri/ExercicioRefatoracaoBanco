@@ -24,8 +24,9 @@ public class App extends Application {
 	private Map<Integer,Conta> contas;
 	private List<Operacao> operacoes;
 	private TelaEntrada telaEntrada;
+	private TelaObserver telaObserver;
 	
-    @Override
+	@Override
     public void start(Stage primaryStage) {
     	this.persistencia = Persistencia.getInstance();
     	this.contas = persistencia.loadContas();    	
@@ -37,6 +38,14 @@ public class App extends Application {
 
         primaryStage.setScene(telaEntrada.getTelaEntrada());
         primaryStage.show();
+        
+        //-------------
+        
+        Stage tObserver = new Stage();
+        tObserver.setTitle("Maior saldo medio");
+        telaObserver = new TelaObserver(tObserver);
+        tObserver.setScene(telaObserver.getTelaObserver());
+        tObserver.show();
     }
     
     @Override
@@ -48,5 +57,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
 }
 

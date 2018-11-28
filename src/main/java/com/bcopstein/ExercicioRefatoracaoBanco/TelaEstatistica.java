@@ -1,7 +1,6 @@
 package com.bcopstein.ExercicioRefatoracaoBanco;
 
 import javafx.scene.control.TextField;
-import java.awt.TextArea;
 import java.util.List;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
