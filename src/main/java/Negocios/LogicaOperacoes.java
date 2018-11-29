@@ -34,16 +34,6 @@ public class LogicaOperacoes {
         Contas.getInstance().contaAtual(num);
     }
     
-    //*@requires valor>0;
-    public void deposito(double valor) { //conta.java
-    	Contas.getInstance().deposito(valor);
-    }
-    
-    //*@requires valor>0;
-    public void retirada(double valor) {
-    	Contas.getInstance().retirada(valor);
-    }
-    
     public ObservableList<Operacao> extrato(int numConta) {
         return Contas.getInstance().extrato(numConta);
     }

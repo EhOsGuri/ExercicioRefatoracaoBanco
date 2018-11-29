@@ -33,15 +33,6 @@ public class Contas {
         return contas;
     }  
     
-    public void retirada(double valor) {//-------------------------------- fazer
-    	
-    }
-    
-    public void deposito(double valor) {//-------------------------------- fazer
-		// TODO Auto-generated method stub
-		
-    }
-    
     public void contaAtual(int num) {
         contaAtual = Contas.getInstance().getContas().get(num);
         if (contaAtual == null) {
@@ -65,8 +56,4 @@ public class Contas {
     public double saldo() {
 		return getContaAtual().getSaldo();
     }
-
-	
-	
-    
 }
