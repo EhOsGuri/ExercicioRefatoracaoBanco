@@ -14,6 +14,11 @@ public class Operacao {
     private double valorOperacao;
     private int tipoOperacao;
     
+    //*@requires dia>0 && dia<32
+    //*@requires mes>0 && mes<13
+    //*@requires hora>0 && hora<25
+    //*@requires segundo>0 && dia<=60
+    //*@requires numConta>0
 	public Operacao(int dia, int mes, int ano, int hora, int minuto, int segundo, int numeroConta, int statusConta,
 			double valorOperacao, int tipoOperacao) {
 		super();
@@ -28,43 +33,43 @@ public class Operacao {
 		this.valorOperacao = valorOperacao;
 		this.tipoOperacao = tipoOperacao;
 	}
-
+	/*@ pure @*/
 	public int getDia() {
 		return dia;
 	}
-
+	/*@ pure @*/
 	public int getMes() {
 		return mes;
 	}
-
+	/*@ pure @*/
 	public int getAno() {
 		return ano;
 	}
-
+	/*@ pure @*/
 	public int getHora() {
 		return hora;
 	}
-
+	/*@ pure @*/
 	public int getMinuto() {
 		return minuto;
 	}
-
+	/*@ pure @*/
 	public int getSegundo() {
 		return segundo;
 	}
-
+	/*@ pure @*/
 	public int getNumeroConta() {
 		return numeroConta;
 	}
-
+	/*@ pure @*/
 	public int getStatusConta() {
 		return statusConta;
 	}
-
+	/*@ pure @*/
 	public double getValorOperacao() {
 		return valorOperacao;
 	}
-
+	/*@ pure @*/
 	public int getTipoOperacao() {
 		return tipoOperacao;
 	}
