@@ -1,7 +1,12 @@
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Interfaces;
 import java.util.List;
 import java.util.Map;
 
+import Negocios.Conta;
+import Negocios.Contas;
+import Negocios.LogicaOperacoes;
+import Negocios.Operacao;
+import Negocios.Operacoes;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

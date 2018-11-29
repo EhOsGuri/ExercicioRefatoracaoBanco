@@ -1,10 +1,10 @@
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Negocios;
 
-public class ContaSilver implements IStateConta{
+public class ContaPlatinum implements IStateConta{
 	private Conta conta;
-	private String categoria="Silver";
+	private String categoria="Platinum";
 	
-	public ContaSilver(Conta c) {
+	public ContaPlatinum(Conta c) {
 		this.conta=c;
 	}
 	

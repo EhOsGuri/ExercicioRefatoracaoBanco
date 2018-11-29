@@ -1,4 +1,4 @@
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Negocios;
 
 public class ContaGold implements IStateConta {
 	private Conta conta;

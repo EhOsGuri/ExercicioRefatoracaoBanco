@@ -1,4 +1,4 @@
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Negocios;
 
 public interface IStateConta {
 	void Saque(Double valor);

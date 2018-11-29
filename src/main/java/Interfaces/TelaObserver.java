@@ -1,7 +1,11 @@
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Interfaces;
 
 import java.util.Observable;
 import java.util.Observer;
+
+import Negocios.Conta;
+import Negocios.LogicaOperacoes;
+import Persistencia.Persistencia;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

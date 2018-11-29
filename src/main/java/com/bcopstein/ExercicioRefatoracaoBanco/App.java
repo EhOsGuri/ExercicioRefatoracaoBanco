@@ -2,6 +2,11 @@ package com.bcopstein.ExercicioRefatoracaoBanco;
 import java.util.List;
 import java.util.Map;
 
+import Interfaces.TelaEntrada;
+import Interfaces.TelaObserver;
+import Negocios.Conta;
+import Negocios.Operacao;
+import Persistencia.Persistencia;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

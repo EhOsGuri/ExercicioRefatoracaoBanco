@@ -1,7 +1,12 @@
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Interfaces;
 
 import javafx.scene.control.TextField;
 import java.util.List;
+
+import Negocios.Conta;
+import Negocios.LogicaOperacoes;
+import Negocios.Operacao;
+import Negocios.Operacoes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

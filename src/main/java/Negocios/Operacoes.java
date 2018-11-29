@@ -1,6 +1,8 @@
 
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Negocios;
 import java.util.List;
+
+import Persistencia.Persistencia;
 
 public class Operacoes {
 	

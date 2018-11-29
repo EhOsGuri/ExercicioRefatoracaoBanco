@@ -1,7 +1,12 @@
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Interfaces;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import Negocios.Conta;
+import Negocios.LogicaOperacoes;
+import Negocios.Operacao;
+import Negocios.Operacoes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;

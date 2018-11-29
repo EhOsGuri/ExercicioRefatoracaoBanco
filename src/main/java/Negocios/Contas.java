@@ -1,8 +1,9 @@
 
-package com.bcopstein.ExercicioRefatoracaoBanco;
+package Negocios;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import Persistencia.Persistencia;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
