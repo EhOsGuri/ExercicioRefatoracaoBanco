@@ -1,10 +1,11 @@
 package Negocios;
 public class Conta {
-	public final int SILVER = 0; //passar para IStateConta
+	public final int SILVER = 0; 
+	
 	public final int GOLD = 1;
 	public final int PLATINUM = 2;
 	
-	public final int LIM_SILVER_GOLD = 50000; // passar para ValidacoesLimites
+	public final int LIM_SILVER_GOLD = 50000; 
 	public final int LIM_GOLD_PLATINUM = 200000;
 	public final int LIM_PLATINUM_GOLD = 100000;
 	public final int LIM_GOLD_SILVER = 25000;
