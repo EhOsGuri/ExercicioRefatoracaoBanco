@@ -1,8 +1,12 @@
 package Negocios;
 
 public interface IStateConta {
-	void Saque(Double valor);
-    void Deposito(Double valor);
+
+    int getStatus();
+
+    String getStrStatus();
+
+    double getLimRetiradaDiaria();
+
+    double deposito(Double valor);
 }
-//Cria a interface StateConta Altera a classe conta para explorar o padrão
-//StatePattern. Explora classes aninhadas.
