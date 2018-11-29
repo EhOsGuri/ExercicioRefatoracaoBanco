@@ -33,6 +33,9 @@ public class Contas {
         return contas;
     }  
     
+    /*
+        @requires num >= 0
+    */
     public void contaAtual(int num) {
         contaAtual = Contas.getInstance().getContas().get(num);
         if (contaAtual == null) {
@@ -40,10 +43,14 @@ public class Contas {
         }
     }
     
+    /*@pure @*/
     public Conta getContaAtual(){
         return contaAtual;
     }
     
+    /*
+    @requires numConta >= 0
+    */
     public ObservableList<Operacao> extrato(int numConta) {
 		return FXCollections.observableArrayList(
                 Operacoes.getInstance().getOperacoes()
@@ -53,7 +60,12 @@ public class Contas {
         );
     
     }
+    
+    /*
+    @ensures \result = contaAtual.getSaldo();
+    @ pure @
+    */
     public double saldo() {
-		return getContaAtual().getSaldo();
+	return getContaAtual().getSaldo();
     }
 }
