@@ -29,19 +29,20 @@ public class Conta {
 		saldo = umSaldo;
 		status = umStatus;
 	}
-	
+	//*@ ensures \result =
+	 /*@ pure @*/
 	public double getSaldo() {
 		return saldo;
 	}
-
+	/*@ pure @*/
 	public Integer getNumero() {
 		return numero;
 	}
-	
+	/*@ pure @*/
 	public String getCorrentista() {
 		return correntista;
 	}
-	
+	/*@ pure @*/
 	public int getStatus() {
 		return status;
 	}
@@ -65,6 +66,8 @@ public class Conta {
 		}
 	}
 	
+	//*@ requires valor>0;
+	//*@ ensures \result=(\old(getSaldo())+valor==getSaldo());
 	public void deposito(double valor) { // passar para LogicaOperacoes.java
 		if (status == SILVER) {
 			saldo += valor;
@@ -80,7 +83,9 @@ public class Conta {
 			saldo += valor * 1.025;
 		}
 	}
-
+	
+	//*@ requires valor>0
+	//*@ ensures \result=(\old(getSaldo())-valor==getSaldo());
 	public void retirada(double valor) { // passar para LogicaOperacoes.java
 		if (saldo - valor < 0.0) {
 			return;

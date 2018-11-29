@@ -51,8 +51,8 @@ public class TelaObserver implements Observer {
         grid.add(labelSaldo, 0, 4);
         
         Conta c = LogicaOperacoes.getInstance().maiorSaldoMedio();
-        this.nomeCorrentistaTextField.setText(c.getCorrentista());
-       // this.maiorSaldoMedioTextField.setText(c.);
+        //this.nomeCorrentistaTextField.setText(c.getCorrentista());
+       // this.maiorSaldoMedioTextField.setText(c.); - erro
         
     	cenaObserver = new Scene(grid);
         return cenaObserver;

@@ -14,7 +14,8 @@ public class LogicaOperacoes {
     private LogicaOperacoes() {
         operacoes = Operacoes.getInstance().getOperacoes();
     }
-
+ 
+    //*@ ensures uniqueInstance!=null
     public static LogicaOperacoes getInstance() {
         if (uniqueInstance == null) {
             System.out.println("Instancia de LogicaOperacoes criada...");
@@ -22,40 +23,64 @@ public class LogicaOperacoes {
         }
         return uniqueInstance;
     }
-
+    //*@ requires num>=0;
+    //*@ ensures \result!=null
     public Conta contaAtual(int num) {
     	return Contas.getInstance().contaAtual(num);
     }
-
+    
+    //*@requires valor>0;
     public void deposito(double valor) { //conta.java
     	Contas.getInstance().deposito(valor);
     }
+    
+    //*@requires valor>0;
     public void retirada(double valor) {
     	Contas.getInstance().retirada(valor);
     }
+    
     public ObservableList<Operacao> extrato(int numConta) {
         return Contas.getInstance().extrato(numConta);
     }
     public double saldo(int num) { 
         return Contas.getInstance().saldo(num);
     }
+    
+    //*@ requires conta! = null 
+    //*@ requires mes!=null && mes.length>0
+    //*@ requires ano!=null && ano.length>0
     public double saldoMedio(Conta conta, String mes, String ano) {
         return Operacoes.getInstance().saldoMedio(conta, mes, ano);
     }
-
+    
+    //*@ requires conta! = null 
+    //*@ requires mes!=null && mes.length>0
+    //*@ requires ano!=null && ano.length>0
     public int qtdDebitos(Conta conta, String mes, String ano) {
        return Operacoes.getInstance().qtdDebitos(conta, mes, ano);
     }
+    
+    //*@ requires conta! = null 
+    //*@ requires mes!=null && mes.length>0
+    //*@ requires ano!=null && ano.length>0
     public double ttDebitos(Conta conta, String mes, String ano) {
         return Operacoes.getInstance().ttDebitos(conta, mes, ano);
     }
-
+    
+    //*@ requires conta! = null 
+    //*@ requires mes!=null && mes.length>0
+    //*@ requires ano!=null && ano.length>0
     public int qtdCreditos(Conta conta, String mes, String ano) {
         return Operacoes.getInstance().qtdCreditos(conta, mes, ano);
     }
+    
+    //*@ requires conta! = null 
+    //*@ requires mes!=null && mes.length>0
+    //*@ requires ano!=null && ano.length>0
     public double ttCreditos(Conta conta, String mes, String ano) {
         return Operacoes.getInstance().ttCreditos(conta, mes, ano);
     }
+    
     public Conta maiorSaldoMedio() {
     	return Persistencia.getInstance().getContaMaiorSaldoMedio();
     }

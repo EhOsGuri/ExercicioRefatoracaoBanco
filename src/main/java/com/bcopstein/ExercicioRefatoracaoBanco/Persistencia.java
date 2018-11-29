@@ -25,7 +25,8 @@ public class Persistencia extends Observable{
     	NomeBDContas = "BDContasBNG.txt";
         NomeBDOperacoes = "BDOperBNG.txt";
     }
- 
+    
+    //*@ ensures uniqueInstance!=null
     public static Persistencia getInstance() {
         if (uniqueInstance == null) {
         	System.out.println("Instancia de Persistencia criada...");
@@ -34,7 +35,7 @@ public class Persistencia extends Observable{
         return uniqueInstance;
     }
     
-     public Map<Integer,Conta> loadContas(){
+    public Map<Integer,Conta> loadContas(){
     	Map<Integer,Conta> contas = new HashMap<>();
     	
         String currDir = Paths.get("").toAbsolutePath().toString();
@@ -139,8 +140,27 @@ public class Persistencia extends Observable{
     }
         
     public void calcularMaiorSaldoMedio() {
-    	//...
+    	Map<Integer,Conta> contas = loadContas();
+    	double maior=0;
+    	for(Map.Entry<Integer, Conta> entry : contas.entrySet()){
+    		//if()
+    	}
+    	
+    	//exemplo percorrer map
+//    	for (Map.Entry<String, Estado> entry : atual.getDestinos().entrySet()){
+//			//System.out.println("2...");
+//			String chave = entry.getKey();
+//			Estado valor = entry.getValue();
+//			char chaveAux=chave.charAt(0);
+//			if(chaveAux==c) {
+//				atual=valor;
+//				cont++;
+//				break;
+//			}
+//		}
     }
+    
+    /*@ pure @*/
     public Conta getContaMaiorSaldoMedio() { 
     	return this.contaMaiorSaldoMedio;
     }
