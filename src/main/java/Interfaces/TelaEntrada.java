@@ -77,9 +77,9 @@ public class TelaEntrada {
 			try {
 				Integer nroConta = Integer.parseInt(tfContaCorrente.getText());
 				
-				Conta conta = LogicaOperacoes.getInstance().contaAtual(nroConta);
+				LogicaOperacoes.getInstance().setContaAtual(nroConta);
 				
-				TelaOperacoes toper = new TelaOperacoes(mainStage, cenaEntrada,conta);
+				TelaOperacoes toper = new TelaOperacoes(mainStage, cenaEntrada);
 				Scene scene = toper.getTelaOperacoes();
 				mainStage.setScene(scene);
 				

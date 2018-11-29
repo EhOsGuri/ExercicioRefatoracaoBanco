@@ -11,6 +11,7 @@ public class Contas {
 
     private static Contas uniqueInstance;
     private  Map<Integer,Conta> contas;
+    private Conta contaAtual;
     
     private Contas() {
         contas = Persistencia.getInstance().loadContas();
@@ -35,30 +36,37 @@ public class Contas {
     public void retirada(double valor) {//-------------------------------- fazer
     	
     }
-    public Conta contaAtual(int num) {
-        Conta conta = Contas.getInstance().getContas().get(num);
-        if (conta == null) {
+    
+    public void deposito(double valor) {//-------------------------------- fazer
+		// TODO Auto-generated method stub
+		
+    }
+    
+    public void contaAtual(int num) {
+        contaAtual = Contas.getInstance().getContas().get(num);
+        if (contaAtual == null) {
             throw new NumberFormatException("Conta invalida");
-        } else {
-            return conta;
         }
     }
-	public ObservableList<Operacao> extrato(int numConta) {
+    
+    public Conta getContaAtual(){
+        return contaAtual;
+    }
+    
+    public ObservableList<Operacao> extrato(int numConta) {
 		return FXCollections.observableArrayList(
                 Operacoes.getInstance().getOperacoes()
                         .stream()
                         .filter(op -> op.getNumeroConta() == numConta)
                         .collect(Collectors.toList())
         );
-	}
-	public double saldo(int num) {
-		return contaAtual(num).getSaldo();
-	}
+    
+    }
+    public double saldo() {
+		return getContaAtual().getSaldo();
+    }
 
-	public void deposito(double valor) {//-------------------------------- fazer
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
     
 }

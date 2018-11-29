@@ -29,10 +29,10 @@ public class TelaEstatistica {
     private TextField campoMes;
     private TextField campoAno;
 
-    public TelaEstatistica(Stage mainStage, Scene cenaoperacoes, Conta c) {
+    public TelaEstatistica(Stage mainStage, Scene cenaoperacoes) {
         this.mainStage = mainStage;
         this.cenaOperacoes = cenaoperacoes;
-        this.conta = c;
+        this.conta = LogicaOperacoes.getInstance().contaAtual();
         this.operacoes = Operacoes.getInstance().getOperacoes();
         this.campoMes = new TextField();
         this.campoAno = new TextField();

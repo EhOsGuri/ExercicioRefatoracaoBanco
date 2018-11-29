@@ -22,8 +22,6 @@ import javafx.scene.control.TextField;
 public class TelaObserver implements Observer {
 	private Stage mainStage;
     private Scene cenaObserver;
-    private TextField nomeCorrentistaTextField;
-    private TextField maiorSaldoMedioTextField;//saldo médio com o maior saldo médio da agência   
     private Observable observados;
     private Conta contaMaiorSaldoMedio;
     
@@ -54,9 +52,9 @@ public class TelaObserver implements Observer {
         Label labelSaldo = new Label(saldoMedio);
         grid.add(labelSaldo, 0, 4);
         
-        Conta c = LogicaOperacoes.getInstance().maiorSaldoMedio();
-        //this.nomeCorrentistaTextField.setText(c.getCorrentista());
-       // this.maiorSaldoMedioTextField.setText(c.); - erro
+        contaMaiorSaldoMedio = LogicaOperacoes.getInstance().maiorSaldoMedio();
+        labelNome.setText("Nome do correntista: "+contaMaiorSaldoMedio.getCorrentista());
+        labelSaldo.setText("Saldo medio: R$"+LogicaOperacoes.getInstance().getSaldoMedio());
         
     	cenaObserver = new Scene(grid);
         return cenaObserver;

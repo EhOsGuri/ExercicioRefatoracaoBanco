@@ -35,10 +35,10 @@ public class TelaOperacoes {
 	private TextField tfValorOperacao;
 	private TextField tfSaldo;
 
-	public TelaOperacoes(Stage mainStage, Scene telaEntrada, Conta conta) { 
+	public TelaOperacoes(Stage mainStage, Scene telaEntrada) { 
 		this.mainStage = mainStage;
 		this.cenaEntrada = telaEntrada;
-		this.conta = conta;
+		this.conta = LogicaOperacoes.getInstance().contaAtual();
 		this.operacoes = Operacoes.getInstance().getOperacoes();
 	}
 
@@ -107,7 +107,7 @@ public class TelaOperacoes {
         grid.add(hbBtn2, 2, 5);
         
         btnEstatistica.setOnAction(e->{
-        	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes, conta);
+        	TelaEstatistica telaEstatistica=new TelaEstatistica(mainStage, cenaOperacoes);
         	Scene cena = telaEstatistica.getTelaEstatistica();
         	mainStage.setScene(cena);
         });

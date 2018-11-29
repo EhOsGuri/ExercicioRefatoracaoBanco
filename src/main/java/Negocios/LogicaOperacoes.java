@@ -26,8 +26,12 @@ public class LogicaOperacoes {
     }
     //*@ requires num>=0;
     //*@ ensures \result!=null
-    public Conta contaAtual(int num) {
-    	return Contas.getInstance().contaAtual(num);
+    public Conta contaAtual() {
+    	return Contas.getInstance().getContaAtual();
+    }
+    
+    public void setContaAtual(int num){
+        Contas.getInstance().contaAtual(num);
     }
     
     //*@requires valor>0;
@@ -44,7 +48,7 @@ public class LogicaOperacoes {
         return Contas.getInstance().extrato(numConta);
     }
     public double saldo(int num) { 
-        return Contas.getInstance().saldo(num);
+        return Contas.getInstance().saldo();
     }
     
     //*@ requires conta! = null 
@@ -84,5 +88,8 @@ public class LogicaOperacoes {
     
     public Conta maiorSaldoMedio() {
     	return Persistencia.getInstance().getContaMaiorSaldoMedio();
+    }
+    public double getSaldoMedio(){
+        return Operacoes.getInstance().saldoMedio(this.maiorSaldoMedio());
     }
 }

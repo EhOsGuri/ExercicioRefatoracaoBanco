@@ -28,7 +28,7 @@ public class Operacoes {
     	Persistencia.getInstance().saveOperacoes(operacoes);
     } 
     public double saldoMedio(Conta conta, String mes, String ano) {
-		double saldo = 0;
+            double saldo = 0;
 	    boolean b = true;
 	    for (Operacao o : operacoes) {
 	        if (o.getNumeroConta() == conta.getNumero()) {
@@ -42,6 +42,7 @@ public class Operacoes {
 	                    saldo -= o.getValorOperacao();
 	                }
 	            }
+                    b = true;
 	        }
 	    }
 	    double valorMes = ttCreditos(conta, mes, ano);
@@ -49,7 +50,27 @@ public class Operacoes {
 	    int qntMes = qtdCreditos(conta, mes, ano);
 	    int qntDebMes = qtdDebitos(conta, mes, ano);
 	    return (saldo + valorMes - valorDebMes) / (qntMes + qntDebMes);
-	}
+    }
+    
+    public double saldoMedio(Conta conta) {
+            double saldo = 0;
+            double qntOp = 0;
+	    boolean b = true;
+	    for (Operacao o : operacoes) {
+	        if (o.getNumeroConta() == conta.getNumero()) {
+                    if (o.getTipoOperacao() == 0) {
+                        saldo += o.getValorOperacao();
+                        qntOp++;
+                    } else {
+                        saldo -= o.getValorOperacao();
+                        qntOp++;
+                    }
+	        }
+	    }
+	    
+	    return (saldo / qntOp);
+    }
+    
     public int qtdDebitos(Conta conta, String mes, String ano) {//telaEstatistica.java
         int qntDebMes = 0;
         for (Operacao o : operacoes) {

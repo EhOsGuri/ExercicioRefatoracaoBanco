@@ -16,6 +16,7 @@ import java.util.Scanner;
 
 import Negocios.Conta;
 import Negocios.Operacao;
+import Negocios.Operacoes;
 
 public class Persistencia extends Observable{
  
@@ -146,9 +147,13 @@ public class Persistencia extends Observable{
     	Map<Integer,Conta> contas = loadContas();
     	double maior=0;
     	for(Map.Entry<Integer, Conta> entry : contas.entrySet()){
-    		//if()
-    	}
+            if(Operacoes.getInstance().saldoMedio(entry.getValue()) > maior){
+                maior = Operacoes.getInstance().saldoMedio(entry.getValue());
+                contaMaiorSaldoMedio = entry.getValue();
+            }
+        }
     	
+        
     	//exemplo percorrer map
 //    	for (Map.Entry<String, Estado> entry : atual.getDestinos().entrySet()){
 //			//System.out.println("2...");
@@ -164,7 +169,8 @@ public class Persistencia extends Observable{
     }
     
     /*@ pure @*/
-    public Conta getContaMaiorSaldoMedio() { 
+    public Conta getContaMaiorSaldoMedio() {
+        this.calcularMaiorSaldoMedio();
     	return this.contaMaiorSaldoMedio;
     }
     public void setContaMaiorSaldoMedio(Conta c) {
